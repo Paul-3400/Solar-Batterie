@@ -102,6 +102,16 @@ Werte gelten ohne Last, einige Minuten nach dem Laden/Entladen. Prozentwerte sin
 - Bei dieser Last ist der Eigenverbrauch von BMS + LM2596 (geschätzt 5–20 mA) relevant; beim Handyladen (1–2 A) ist er vernachlässigbar
 - Erwartung fürs Handyladen: LM2596 wird mit 2–3 W Verlustleistung deutlich warm (60–70 °C noch normal), darüber Kühlblech; realistische Dauerlast max. 2 A
 
+## Ladeverhalten im Echtbetrieb
+
+![Ladevorgang bei wechselnder Bewölkung, Vormittag 09.10.2026](images/Bildschirmfoto%202026-10-09%20um%2012.45.24.png)
+
+Foto des Ladevorgangs an einem Vormittag mit wechselnder Bewölkung (09.10.2026, Screenshot 12:45 Uhr):
+
+- **Ladefertig zwischen 11:00 und 12:00 Uhr**: Der Pack (ca. 9,9 Ah) war an einem halben Tag mit teils bewölktem Himmel vollständig geladen. Das Panel ist für diese Packgrösse grosszügig dimensioniert – genug Reserve auch für schwächere Tage (Spätherbst/Winter).
+- **Pendelnde Ladeleistung nach Ladefertigstellung**: Der Regler schaltet bei Erreichen der Ladeschlussspannung (8,4 V) ab und lädt periodisch nach, sobald die Packspannung durch Lastabgriff (LM2596, Eigenverbrauch) sinkt. Das beobachtete «Pendeln» ist normales Nachschaltverhalten – der Regler hält den Pack auf 8,4 V, ohne dauerhaft nachzuladen. Gut für die Zell-Lebensdauer.
+- Die wechselnde Bewölkung ist im Verlauf sichtbar: Bei Wolkenbrüchen sinkt die Panelleistung, die U-MPPT-Regelung hält den Arbeitspunkt aufrecht.
+
 ## Fallstricke (Lessons Learned)
 
 1. **Zellen angleichen** vor dem Parallelschalten – gleiche Spannung, kein Mischbestand aus alt/neu.
@@ -115,6 +125,7 @@ Werte gelten ohne Last, einige Minuten nach dem Laden/Entladen. Prozentwerte sin
 
 ## Offene Punkte / nächste Schritte
 
+- [x] Erster vollständiger Ladezyklus im Echtbetrieb dokumentiert (09.10.2026): Ladefertig 11:00–12:00 Uhr bei wechselnder Bewölkung, danach pendelndes Nachladen im Erhaltungsbetrieb
 - [ ] 5 V unter Last nachmessen (Soll: 5,0 V ± 0,25 V)
 - [ ] U-MPPT bei voller Sonne auf ~17–18 V einstellen
 - [ ] USB-C-Socken mit 5,1-kΩ-CC-Pulldowns einbauen
